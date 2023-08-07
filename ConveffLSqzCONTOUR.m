@@ -1,4 +1,4 @@
-%PLEASE RUN THE SECTIONS SEPERATELY FOR DIFFERENT PLOTS
+%RUN SECTIONS SEPERATELY FOR SEPERATE PLOTS
 close all;
 %Conversion efficiency vs length, squeezing contour plot
 
