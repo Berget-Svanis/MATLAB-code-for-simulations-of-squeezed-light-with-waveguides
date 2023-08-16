@@ -104,7 +104,7 @@ nB = sqrt(eta_norm).*L.*B; %sqrt(Output power) times sqrt(eta_norm)*L
 delta_P = 0.1; %Input fluctuations in delta_P_in/P_in
 P_in_eff = (1+delta_P).*P_in;
 
-tau = 9.533e-4; %Relaxation time (s)
+tau = 9.533e-4; %Relaxation time (s), Assuming a nonlinear interaction radius of 25 microns
 V = 1.296e-11; %Mode volume (m^3)
 C = 633; %Specific heat capacity, J/(kg*k)
 rho = 4648; %Density, kg/m^3
