@@ -5,3 +5,5 @@ This repository consists of MATLAB scripts used to simulate the generation of sq
 The equations from which these simulations derive from as well as the the plots and their interpretations can be seen here [INSERT SOURCE].
 
 Note that some of the MATLAB scripts are divided into sections. These sections each seperately produces diffrent plots and thus these sections should be run seperately if the individual plots are of interest. 
+
+For questions or comments, contact the creator at esvanb@ug.kth.se. 
