@@ -1,4 +1,4 @@
-# Simulations-of-squeezed-light-generation-with-waveguides
+# Simulations of squeezed light generation in waveguides
 
 This repository consists of MATLAB scripts used to simulate the generation of squeezed light using waveguides. It considers from second harmonic generation all the way to homodyne readout. These scripts are used to generate plots which detail how squeezing levels, power, waveguide parameters, losses and phase noise all interplay. 
 
