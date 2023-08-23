@@ -1,4 +1,5 @@
-%RUN SECTIONS SEPERATELY FOR SEPERATE PLOTS
+%Each plot is seperated into its own section. To only have one plot, run
+%only that section. 
 close all;
 %Conversion efficiency vs length, squeezing contour plot
 
@@ -20,6 +21,8 @@ set(gca(),'ColorOrder',cmap)
 num = numel(var);
 c = parula(num); %Sets color gradient
 
+figure(1)%Defines the first plot
+
 syms x
 for i = 1:num
     disp(i) %Shows how far the code has run
@@ -40,9 +43,8 @@ ylabel('Normalized efficiency (1/(cm^2W)','Fontsize',16);
 
 
 title('Contour plot: Normalized efficiency and Length vs Squeezing. Semilogy', 'Fontsize',12)
-
+grid 
 %% Conversion efficiency and length vs POWER. For a specific squeezing
-close all;
 %Conversion efficiency vs length, squeezing contour plot
 
 dB_to_pow = @(d) 10.^(d./10);
@@ -62,6 +64,8 @@ set(gca(),'ColorOrder',cmap)
 
 num = numel(P);
 c = parula(num); %Sets color gradient
+
+figure(2)%Defines the second plot
 
 syms x
 for i = 1:num
@@ -83,3 +87,4 @@ ylabel('Normalized efficiency (1/(cm^2W)','Fontsize',16);
 
 
 title('Contour plot: Normalized efficiency and Length vs Power needed for 10 dB squeezing', 'Fontsize',12)
+grid 
