@@ -1,8 +1,8 @@
-%Cascaded squeezers in WG with phase noise, RUN SECTIONS SEPARATELY 
+%Cascaded squeezers in WG with phase noise
+%Run sections separately for separate plots! 
 %% Detection loss and phase noise of 1st squeezer vs squeezing level contour plot
 
 %Cascaded squeezing
-
 %dB conversions
 dB_to_pow = @(d) 10.^(d./10);
 pow_to_dB = @(p) 10.*log10(p);
@@ -31,6 +31,8 @@ num = numel(V_eff_ls);
 cmap = flip(autumn(num),1); % yellow -> red
 set(gca(),'ColorOrder',cmap)
 c = parula(num); %Sets color gradient
+
+figure(1) %Creates the first plot
 
 for j=1:num
     disp(j) %Checks how far the code has run
@@ -89,7 +91,7 @@ ax=gca;
 ax.FontSize = 12;
 set(ax, 'xlim', [0 100]);
 set(ax, 'ylim', [0 100]);
-
+grid
 %% Detection loss and phase noise of 2nd squeezer vs squeezing level contour plot
 
 %Cascaded squeezing
@@ -122,6 +124,7 @@ num = numel(V_eff_ls);
 cmap = flip(autumn(num),1); % yellow -> red
 set(gca(),'ColorOrder',cmap)
 c = parula(num); %Sets color gradient
+figure(2) %Creates the second plot
 
 for j=1:num
     disp(j) %Checks how far the code has run
@@ -180,3 +183,4 @@ ax=gca;
 ax.FontSize = 12;
 set(ax, 'xlim', [0 100]);
 set(ax, 'ylim', [0 100]);
+grid

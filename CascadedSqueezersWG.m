@@ -1,4 +1,5 @@
-%Cascaded squeezer waveguides, RUN EACH SECTION SEPARATELY
+%Cascaded squeezer waveguides
+%Run sections separately for individual plots 
 %% esc2 and eta_2 vs eta_eff
 
 eff_ls = [0.2 0.4 0.6 0.8];
@@ -7,6 +8,7 @@ cmap = flip(autumn(4),1); % yellow -> red, with  4 colors (for 4 lines)
 set(gca(),'ColorOrder',cmap)
 num = numel(eff_ls);
 c = parula(num); %Sets color gradient
+figure(1) %Creates the first plot
 
 n = 100; %Amount of data points
 R2 = 1.5; %Anti-squeezing parameter
@@ -29,13 +31,14 @@ for j=1:num
 end
 
 xlabel('\eta_2','FontSize',16);
-ylabel('\eta_{sqzx2}','Fontsize',16);
+ylabel('\eta_{sqz2}','Fontsize',16);
+title('\eta_{eff} vs \eta_2 and \eta_{sqz2}','Fontsize',16);
 
 ax=gca;
 ax.FontSize = 12;
 set(ax, 'xlim', [0 1]);
 set(ax, 'ylim', [0 1]);
-
+grid
 %% Amplified vacuum and squuezed state comparison
 
 %dB conversions
@@ -84,7 +87,7 @@ for i=1:n_R2
 end
 
 %Plotting
-figure(1)
+figure(2) %Creates the second plot
 %First subplot, amplified squeezed state and amplified vacuum
 subplot(3,1,[1 2])
 
@@ -109,6 +112,7 @@ plot(R2,pow_to_dB(V_sqz_eff./V_vac_eff),'Displayname','Effective noise reduction
 
 xlabel('Squeezer 2 parameter, R_2','FontSize',16);
 ylabel('Noise level (dB)','Fontsize',16);
+grid
 
 %% Variance vs eta_2 loss for different squeezing parameters R2
 
@@ -126,6 +130,8 @@ sqz1 = 1;
 sqz2 = 1;
 
 R2 = [0,0.5,1,2,5,10];
+
+figure(3) %Creates the third plot
 
 for j=1:numel(R2)
     V_eff = zeros(1,n);
@@ -171,3 +177,4 @@ title(strcat('Squeezing vs detection loss, initial squeezing = ',num2str(round(p
 lgd = legend;
 lgd.FontSize = 10;
 lgd.Location = 'best';
+grid
