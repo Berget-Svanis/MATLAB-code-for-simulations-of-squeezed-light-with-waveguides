@@ -1,6 +1,5 @@
-%WARNING: RUN EACH SECTION SEPERATELY FOR CLEARER RESULTS
 %PhaseMismatch for GitHub
-
+%Run each section separately for separate plots! 
 %% Squeezing vs temperature fluctuations
 
 %Phase mismatch causing phase noise fluctuation
@@ -48,6 +47,8 @@ nB = sqrt(eta_norm).*L.*B; %sqrt(Output power) times sqrt(eta_norm)*L
 V_an_X = (sin(pm).*sinh(nB)).^2 + (cos(pm).*sinh(nB) + cosh(nB)).^2;
 V_an_Y = (sin(pm).*sinh(nB)).^2 + (cos(pm).*sinh(nB) - cosh(nB)).^2;
 
+figure(1) %Creates the first plot
+
 hold on
 plot(T,pow_to_dB(V_an_Y), 'Displayname', 'Squeezing')
 plot(T,T.*0,'k','Displayname', 'Shot noise')
@@ -58,7 +59,8 @@ lgd.Location = 'best';
 
 xlabel('Temperature ( ^oC)','FontSize',16);
 ylabel('Variance (dB)','Fontsize',16);
-
+title('Squeezing vs temperature','Fontsize',14);
+grid
 %% Squeezing vs amplitude fluctuations
 
 dB_to_pow = @(d) 10.^(d./10);
@@ -122,6 +124,8 @@ pm = delta_k.*L;
 V_an_X = (sin(pm).*sinh(nB)).^2 + (cos(pm).*sinh(nB) + cosh(nB)).^2;
 V_an_Y = (sin(pm).*sinh(nB)).^2 + (cos(pm).*sinh(nB) - cosh(nB)).^2;
 
+figure(2) %Creates the second plot
+
 hold on
 plot(delta_P,pow_to_dB(V_an_Y), 'Displayname', 'Squeezing')
 plot(delta_P,delta_P.*0,'k','Displayname', 'Shot noise')
@@ -132,7 +136,8 @@ lgd.Location = 'best';
 
 xlabel('\delta P_{in}/P_{in}','FontSize',16);
 ylabel('Variance (dB)','Fontsize',16);
-
+title('Squeezing vs amplitude fluctuations','Fontsize',14);
+grid
 %% Squeezing vs frequency fluctuations
 
 dB_to_pow = @(d) 10.^(d./10);
@@ -180,6 +185,8 @@ pm = delta_k.*L;
 V_an_X = (sin(pm).*sinh(nB)).^2 + (cos(pm).*sinh(nB) + cosh(nB)).^2;
 V_an_Y = (sin(pm).*sinh(nB)).^2 + (cos(pm).*sinh(nB) - cosh(nB)).^2;
 
+figure(3) %Creates the third plot
+
 hold on
 plot(1e6.*d_omega,pow_to_dB(V_an_Y), 'Displayname', 'Squeezing')
 plot(1e6.*d_omega,d_omega.*0,'k','Displayname', 'Shot noise')
@@ -190,3 +197,5 @@ lgd.Location = 'best';
 
 xlabel('\delta \omega /\omega \cdot 10^{6}','FontSize',16);
 ylabel('Variance (dB)','Fontsize',16);
+title('Squeezing vs frequency fluctuations','Fontsize',14);
+grid

@@ -53,6 +53,8 @@ V_sqz = @(pm) eta_tot.*abs(sin(pm).*sinh(nB)).^2 + abs(cos(pm).*sinh(nB) - cosh(
 V_no_offset = V_sqz(phi).*cos(rad./1000).^2 + V_asqz(phi).*sin(rad./1000).^2;
 V_offset = V_sqz(phi+pm).*cos(rad./1000).^2 + V_asqz(phi+pm).*sin(rad./1000).^2;
 
+figure(1) %Creates the first plot
+
 hold on
 plot(phi,pow_to_dB(V_no_offset), 'Displayname', '\Delta T = 0')
 plot(phi,pow_to_dB(V_offset), 'Displayname', strcat('\Delta T = ',num2str(dT.*1e3),' mK'))
@@ -70,7 +72,8 @@ set(ax,'XTickLabel',{strcat(num2str(-lim./pi),'\pi'),strcat(num2str(-lim/(2*pi))
 
 xlabel('SH phase, \phi','FontSize',16);
 ylabel('Variance (dB)','Fontsize',16);
-
+title('Variance vs phase with temperature offset','Fontsize',14);
+grid
 %% Power fluctuations
 
 dB_to_pow = @(d) 10.^(d./10);
@@ -144,6 +147,8 @@ V_sqz = @(pm,nB) eta_tot.*abs(sin(pm).*sinh(nB)).^2 + abs(cos(pm).*sinh(nB) - co
 V_no_offset = V_sqz(phi,nB).*cos(rad./1000).^2 + V_asqz(phi,nB).*sin(rad./1000).^2;
 V_offset = V_sqz(phi+pm,nB_eff).*cos(rad./1000).^2 + V_asqz(phi+pm,nB_eff).*sin(rad./1000).^2;
 
+figure(2) %Creates the second plot
+
 hold on
 plot(phi,pow_to_dB(V_no_offset), 'Displayname', '\Delta P_{in} = 0')
 plot(phi,pow_to_dB(V_offset), 'Displayname', strcat('\Delta P_{in}/P_{in} = ',num2str(delta_P)))
@@ -161,3 +166,5 @@ set(ax,'XTickLabel',{strcat(num2str(-lim./pi),'\pi'),strcat(num2str(-lim/(2*pi))
 
 xlabel('SH phase, \phi','FontSize',16);
 ylabel('Variance (dB)','Fontsize',16);
+title('Variance vs phase with amplitude offset','Fontsize',14);
+grid
