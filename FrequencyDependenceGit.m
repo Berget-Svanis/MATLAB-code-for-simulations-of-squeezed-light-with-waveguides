@@ -1,4 +1,5 @@
-%Frequency dependency script for GitHub, RUN EACH SECTION SEPARATELY
+%Frequency dependency script for GitHub
+%Run each section separately for separate plots! 
 %% Frequency dependence squeezer WG
 
 sideband_freq = linspace(1e6,1e9,10000);
@@ -13,6 +14,8 @@ eta_norm = eta_norm.*((carrier_freq + 2.*pi.*sideband_freq)./carrier_freq).^2; %
 %Requires to have sqzWG in the same folder! Script exists on GitHub
 [s,as] = sqzWG(L,P_in,eta_norm,1,0.88,1,0,14e-3); 
 
+figure(1) %Creates the first plot
+
 semilogx(sideband_freq,s,'Displayname', 'Squeezing')
 hold on 
 semilogx(sideband_freq,as,'Displayname', 'Anti-squeezing')
@@ -26,7 +29,7 @@ xlabel('Sideband Frequency (Hz)','FontSize',16);
 ylabel('Variance (dB)','Fontsize',16);
 
 title('Squeezing vs sideband frequency, carrier wavelength = 1550 nm','Fontsize',14)
-
+grid
 %% SHG efficiency for a certain wavelength 
 
 sinc = @(x) sin(x)./x; %sinc function
@@ -42,6 +45,8 @@ delta_k = 2.*pi.*(2.*dn_0-dn_SHG).*(1-lambda_0./lambda);
 
 eff = (sinc(delta_k.*L./2)).^2;
 
+figure(2) %Creates the second plot
+
 plot(lambda.*1e9,eff)
 
 xlabel('Wavelength (nm)','FontSize',16);
@@ -52,7 +57,7 @@ FWHM = (2.*lambda_0.*(1.39155)./(pi.*L.*(2.*dn_0-dn_SHG)))./(1-1.39155./(pi.*L.*
 
 t = annotation('textbox', [0.65, 0.8, 0.1, 0.1], 'String', strcat('FWHM = ', num2str(round(FWHM*1e9,2)), ' nm'));
 t.FontSize = 14;
-
+grid
 %% SHG efficiency vs sideband frequency 
 
 sinc = @(x) sin(x)./x;
@@ -74,6 +79,8 @@ delta_k = 2.*pi.*(2.*dn_0-dn_SHG).*freq_ls./carrier_freq;
 
 eff = (sinc(delta_k.*L./2)).^2;
 
+figure(3) %Creates the third plot
+
 plot(freq_ls./OMEGA,eff)
 
 xlabel('Sideband frequencies (\Omega)','FontSize',16);
@@ -91,3 +98,4 @@ end
 set(ax,'XTickLabel',x_tick_label_ls)
 
 title(strcat('SHG efficiency vs sideband frequency for \Omega = ',num2str(OMEGA./1e9), ' GHz'), 'Fontsize',14)
+grid
